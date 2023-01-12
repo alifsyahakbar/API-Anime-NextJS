@@ -27,7 +27,7 @@ export default function ResultSearch({ search }: Props) {
     <>
       {search && (
         <h1 className="text-md tracking-wide lg:text-xl text-slate-800 text-left lg:ml-12 ml-4 lg:my-4 my-6 font-bangers dark:text-white">
-          Hasil pencarian : <span className="">"{search}"</span>
+          Hasil pencarian : <span className="underline">{search}</span>
         </h1>
       )}
       <div className="w-full h-auto text-center lg:mt-4 mt-1">
