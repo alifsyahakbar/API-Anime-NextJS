@@ -9,10 +9,12 @@ export default function Sidebar() {
             <Link href={"/"}>Home</Link>
           </li>
           <li className="py-1 px-10 hover:underline text-xl font-bangers tracking-wide">
-            <Link href={"/"}>Dev</Link>
+            <Link onClick={() => alert("Update V1.1")} href="">
+              Dev
+            </Link>
           </li>
           <li className="py-1 px-10 hover:underline text-xl font-bangers tracking-wide">
-            <Link href={"/"}>Github</Link>
+            <Link href={"https://github.com/alifsyahakbar"}>Github</Link>
           </li>
         </ul>
       </div>

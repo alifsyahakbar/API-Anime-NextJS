@@ -34,6 +34,7 @@ export default function RelationSection({ anime }: any) {
                 >
                   <Image
                     loader={myLoader}
+                    unoptimized={true}
                     src={data.entry.images.webp.image_url}
                     alt={data.entry.title}
                     width={100}
