@@ -1,16 +1,19 @@
 import useSWR from "swr";
 import Image from "next/image";
-import Loading2 from "./skeleton/Loading2";
+import Loading2 from "../Atom/skeleton/Loading2";
 import { useRouter } from "next/router";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-export default function All() {
+export default function All({ value, limit }: any) {
   const myLoader = ({ src }: any) => {
     return `${src}`;
   };
 
-  const { data, error } = useSWR(`https://api.jikan.moe/v4/top/anime`, fetcher);
+  const { data, error } = useSWR(
+    `https://api.jikan.moe/v4/top/${value}?limit=${limit}`,
+    fetcher
+  );
   var loading2 = !data && !error;
 
   const router = useRouter();
@@ -25,8 +28,8 @@ export default function All() {
               return (
                 <div
                   key={user.mal_id}
-                  onClick={() => router.push(`/anime/${user.mal_id}`)}
-                  className="flex bg-slate-50 dark:bg-[#333333] rounded-sm overflow-hidden shadow-md transition-all duration-300 hover:opacity-75 hover:cursor-pointer"
+                  onClick={() => router.push(`/${value}/${user.mal_id}`)}
+                  className="flex bg-slate-50 dark:bg-[#242424] rounded-sm overflow-hidden shadow-md transition-all duration-300 hover:opacity-75 hover:cursor-pointer"
                 >
                   <Image
                     loader={myLoader}

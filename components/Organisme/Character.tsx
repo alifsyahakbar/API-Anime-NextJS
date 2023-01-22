@@ -5,10 +5,10 @@ import useSWR from "swr";
 const fetcher = (url: any) => fetch(url).then((res) => res.json());
 
 export default function Character({ value }: any) {
-  const myLoader = ({ src, width, quality }: any) => {
-    return `${src}`;
+  const myLoader = ({ src, width }: any) => {
+    return `${src}&w=${width}}`;
   };
-  const { data, error }: any = useSWR(
+  const { data, error } = useSWR(
     `https://api.jikan.moe/v4/anime/${value.mal_id}/characters`,
     fetcher
   );
@@ -28,6 +28,7 @@ export default function Character({ value }: any) {
               <Image
                 src={data.character.images.jpg.image_url}
                 loader={myLoader}
+                unoptimized={true}
                 alt={data.character.images.jpg.image_url}
                 width={100}
                 height={100}
@@ -50,6 +51,7 @@ export default function Character({ value }: any) {
                     <Image
                       src={data.person.images.jpg.image_url}
                       loader={myLoader}
+                      unoptimized={true}
                       alt={data.person.images.jpg.image_url}
                       width={100}
                       height={100}

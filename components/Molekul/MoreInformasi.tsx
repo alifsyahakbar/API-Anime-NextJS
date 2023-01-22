@@ -1,10 +1,10 @@
 import { MdOutlineClose } from "react-icons/md";
 import { useState, useEffect } from "react";
-import ListInformasi from "./ListInformasi";
+import ListInformasi from "../Atom/ListInformasi";
 
 export default function MoreInformasi({ close, data }: any) {
   return (
-    <div className="fixed left-0 top-0 backdrop-blur-sm bg-white/30 w-full h-full shadow-lg">
+    <div className="fixed z-50 left-0 top-0 backdrop-blur-sm bg-white/30 w-full h-full shadow-lg">
       <div className="bg-white absolute top-14 h-auto pb-4 w-screen text-black">
         <div className="flex justify-between items-center px-4 py-2 border-b-2">
           <h1 className="text-start text-xl font-bangers ">Information</h1>

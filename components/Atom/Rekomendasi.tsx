@@ -2,26 +2,26 @@ import { useRouter } from "next/router";
 import React from "react";
 import Image from "next/image";
 import useSWR from "swr";
-import NotData from "./NotData";
+import NotData from "../Atom/NotData";
 
 const fetcher = (url: any) => fetch(url).then((res) => res.json());
 
-export default function RelationSection({ anime }: any) {
+export default function Rekomendasi() {
   const router = useRouter();
 
-  const myLoader = ({ src }: any) => {
-    return `${src}`;
+  const myLoader = ({ src, width, quality }: any) => {
+    return `${src}&w=${width}}`;
   };
 
   const { data, error } = useSWR(
-    `https://api.jikan.moe/v4/anime/${anime.mal_id}/recommendations`,
+    `https://api.jikan.moe/v4/anime/5114/recommendations`,
     fetcher
   );
 
   return (
     <div>
       <h1 className="text-lg lg:text-2xl mx-4 my-2 font-bangers tracking-wide border-t-2 pt-2">
-        Rekomendasi
+        Rekomendasi Anime
       </h1>
       {(data?.data || []).length ? (
         <div className="flex overflow-x-scroll bg-[#f0ebeb] dark:bg-black scrollbar-hide">
@@ -50,7 +50,7 @@ export default function RelationSection({ anime }: any) {
       ) : (
         <div className="flex justify-center">
           <NotData
-            value={"Tidak ada rekomendasi anime"}
+            value={`Tidak ada rekomendasi Anime`}
             fonts={"text-lg"}
           ></NotData>
         </div>

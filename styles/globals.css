@@ -12,3 +12,9 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* @layer base {
+  tbody tr:nth-child(even) {
+    background-color: #f8f8f8;
+  }
+} */

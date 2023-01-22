@@ -11,7 +11,6 @@ import RelationSection from "../../components/Molekul/RelationSection";
 import Character from "../../components/Organisme/Character";
 import TailerVideo from "../../components/Molekul/TailerVideo";
 import ScrollToTop from "../../components/Atom/button/ScrollToTop";
-import { useRouter } from "next/router";
 
 export default function Details({ data }: any) {
   const [open, setOpen] = useState(false);
@@ -23,7 +22,7 @@ export default function Details({ data }: any) {
   return (
     <div className="relative">
       <Header></Header>
-      <div className=" bg-[#f0ebeb] dark:bg-black p-3 lg:pl-4">
+      <div className=" bg-[#f0ebeb] dark:bg-[#2c2c2c] p-3 lg:pl-4">
         <h1 className="text-2xl lg:text-3xl font-serif font-bold">
           {data.title}
         </h1>
@@ -59,12 +58,20 @@ export default function Details({ data }: any) {
                 <h1 className="flex items-center font-bold mb-2 text-xl lg:text-3xl gap-2 lg:gap-3">
                   {data.type}{" "}
                   <span className="font-normal text-sm lg:text-lg">
-                    ( {data.episodes} Episodes )
+                    ( {data.volumes == null ? "?" : data.volumes} Volumes )
                   </span>
                 </h1>
-                <span>Aired</span>
-                <p className="text-lg lg:text-2xl lg:mt-2 capitalize">
-                  {data.season} <span className="font-bold">{data.year}</span>
+              </li>
+              <li>
+                <h1 className="flex items-center font-bold text-xl lg:text-3xl gap-2 lg:gap-3">
+                  <p className="text-lg lg:text-2xl lg:mt-2 hidden lg:flex">
+                    Published{" "}
+                    <span className="font-bold">{data.published.string}</span>
+                  </p>
+                </h1>
+                <p className="text-lg lg:text-2xl lg:mt-2 font-bold">
+                  {data.favorites}
+                  <span className="font-normal"> Favorites</span>
                 </p>
               </li>
             </ul>
@@ -75,15 +82,13 @@ export default function Details({ data }: any) {
               <FaCaretRight></FaCaretRight>More Information
             </button>
             <div>
-              {open && (
+              {/* {open && (
                 <MoreInformasi close={setOpen} data={data}></MoreInformasi>
-              )}
+              )} */}
             </div>
           </div>
         </div>
-        <div className="hidden lg:flex my-auto w-[560px]">
-          <TailerVideo data={data} width={"560"} height={"355"}></TailerVideo>
-        </div>
+        <div className="hidden lg:flex my-auto "></div>
       </div>
       <div className="flex items-center gap-2 px-4 py-2  bg-[#f0ebeb] dark:bg-black">
         <h4>Top</h4>
@@ -99,29 +104,20 @@ export default function Details({ data }: any) {
         <h4 className="truncate">{data.title_japanese}</h4>
       </div>
       <div className="lg:flex">
-        <div className="px-4 mb-4 lg:w-1/2">
+        <div className="px-4 mb-4">
           <h1 className="text-xl lg:text-2xl font-bangers tracking-wide mt-2">
             Synopsis
           </h1>
           <p className="mt-2">{data.synopsis}</p>
         </div>
-        <div className="lg:w-1/2 pt-2 pb-4">
-          <h1 className="text-xl px-4 lg:text-2xl font-bangers tracking-wide mt-2">
-            Information
-          </h1>
-          <ListInformasi data={data}></ListInformasi>
-        </div>
-      </div>
-      <div className="flex lg:hidden justify-center">
-        <TailerVideo data={data} width={"350"} height={"200"}></TailerVideo>
       </div>
       <div>
-        <RelationSection anime={data} value={"anime"}></RelationSection>
+        <RelationSection anime={data} value={"manga"}></RelationSection>
       </div>
       <div>
         <Character value={data}></Character>
       </div>
-      <div className="fixed bottom-3 right-3">
+      <div className="fixed bottom-5 right-4">
         <ScrollToTop></ScrollToTop>
       </div>
       <Footer></Footer>
@@ -131,7 +127,7 @@ export default function Details({ data }: any) {
 
 export const getServerSideProps = async ({ query }: any) => {
   const res = await axios.get(
-    `https://api.jikan.moe/v4/anime/${query.id}/full`
+    `https://api.jikan.moe/v4/manga/${query.id}/full`
   );
   const data = await res.data.data;
 
