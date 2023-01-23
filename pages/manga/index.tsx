@@ -3,11 +3,9 @@ import Header from "../../components/Organisme/Header";
 import { useRouter } from "next/router";
 import ResultSearch from "../../components/Organisme/ResultSearch";
 import All from "../../components/Organisme/All";
-import ScrollToTop from "../../components/Atom/button/ScrollToTop";
 
 export default function index() {
   const [search, setSearch] = useState("");
-  const router = useRouter();
 
   const HandleSearch = (e: any) => {
     e.preventDefault();

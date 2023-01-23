@@ -63,7 +63,7 @@ export default function about() {
               Situs MyAnimeList diluncurkan pada bulan November 2004 oleh
               Garrett Gyssler dan dikelola sendiri sampai tahun 2008. Mulanya
               situs ini dipanggil dengan AnimeList, tetapi Garret Gyssler
-              memutuskan untuk menggabungkan kata "My" di awal nama, mengikuti
+              memutuskan untuk menggabungkan kata My di awal nama, mengikuti
               jejak dari jejaring sosial paling penting pada tahun-tahun itu:
               Myspace. Pada 4 Agustus 2008, CraveOnline, situs hiburan dan gaya
               hidup pria yang dimiliki oleh AtomicOnline, membeli MyAnimeList
@@ -80,7 +80,7 @@ export default function about() {
               dari situs web. Layanan ini awalnya diluncurkan di Kanada tetapi
               kemudian diperluas ke Amerika Serikat, Inggris, dan beberapa
               negara berbahasa Inggris lainnya. Pada bulan April 2017,
-              MyAnimeList menambahkan The King's Avatar, suatu Animasi Tiongkok
+              MyAnimeList menambahkan The King Avatar, suatu Animasi Tiongkok
               (Anime Cina) pada database situs ini. MAL menjadi tidak dapat
               diakses selama beberapa hari pada bulan Mei dan Juni 2018 ketika
               staf situs menjadikannya offline untuk pemeliharaan, dengan alasan
