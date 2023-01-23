@@ -6,7 +6,7 @@ import Loading2 from "./skeleton/Loading2";
 import { FaAngleRight } from "react-icons/fa";
 import star from "../../public/star.svg";
 
-export default function ({ value, limit }: any) {
+export default function TableList({ value, limit }: any) {
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
   const myLoader = ({ src }: any) => {

@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import ResultSearch from "../../components/Organisme/ResultSearch";
 import All from "../../components/Organisme/All";
 
-export default function index() {
+export default function Index() {
   const [search, setSearch] = useState("");
 
   const HandleSearch = (e: any) => {

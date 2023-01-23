@@ -5,7 +5,7 @@ import Header from "../components/Organisme/Header";
 import Footer from "../components/Organisme/Footer";
 import Link from "next/link";
 
-export default function about() {
+export default function About() {
   const [search, setSearch] = useState("");
 
   const HandleSearch = (e: any) => {
