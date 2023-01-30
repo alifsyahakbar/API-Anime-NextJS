@@ -13,3 +13,4 @@ jobs:
         with:
           spec: cypress/e2e/home.cy.ts
           start: npm start
+          build: npm build
