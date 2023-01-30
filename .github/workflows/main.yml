@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3.3.0
-      - name: Cypress.io
+      - name: Cypress Test
         uses: cypress-io/github-action@v5.0.5
         with:
-          run: npm start
+          start: npm start
