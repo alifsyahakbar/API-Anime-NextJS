@@ -6,6 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      - uses: cypress-io/github-action@37c511bc322f112c2dd629d3610f4f096bc80096
       - name: Checkout
         uses: actions/checkout@v3.3.0
       - name: Cypress.io
