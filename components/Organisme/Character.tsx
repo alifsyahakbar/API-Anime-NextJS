@@ -15,12 +15,6 @@ export default function Character({ value }: any) {
 
   return (
     <div>
-      <div>
-        <h1 className="text-lg lg:text-2xl mx-4 my-2 font-bangers tracking-wide border-b-2 pb-2">
-          Characters & Voice Actor
-        </h1>
-      </div>
-
       {data?.data?.map((data: any, index: number) => {
         return (
           <div key={index} className="flex justify-between p-2 mx-2 border-b-2">
@@ -32,7 +26,7 @@ export default function Character({ value }: any) {
                 alt={data.character.images.jpg.image_url}
                 width={100}
                 height={100}
-                className={"w-14 h-20"}
+                className={"w-14 h-20 rounded-md"}
               ></Image>
               <div className="ml-2 flex flex-col gap-1">
                 <h3>{data.character.name}</h3>
@@ -55,7 +49,7 @@ export default function Character({ value }: any) {
                       alt={data.person.images.jpg.image_url}
                       width={100}
                       height={100}
-                      className={"w-14 h-auto"}
+                      className={"w-14 h-auto rounded-md"}
                     ></Image>
                   </div>
                 );

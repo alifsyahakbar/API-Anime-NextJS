@@ -9,11 +9,13 @@ module.exports = {
     extend: {
       fontFamily: {
         bangers: ["Bangers", "cursive"],
+        inter: ["Inter", "sans-serif"],
       },
        animation: {
         'spin-slow': 'spin 5s linear infinite',
       }
     },
   },
-  plugins: [],
+  plugins: [
+  ],
 }

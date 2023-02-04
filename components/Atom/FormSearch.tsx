@@ -16,10 +16,10 @@ export default function FormSearch({
         <input
           type="text"
           placeholder={title}
-          className={`${styleInput} tracking-wide focus:text-slate-800 focus:shadow-md outline-gray-500 font-bangers font-light dark:text-white`}
+          className={`${styleInput} w-3/4 focus:text-slate-800 shadow-md outline-none font-bangers dark:text-white`}
         />
         <button
-          className={`${styleButton} border-spacing-1 border-slate-200  items-center flex gap-x-1 dark:bg-white dark:text-black font-bangers`}
+          className={`${styleButton} bg-[#564da2] border-spacing-1 border-slate-200 font-bangers items-center flex gap-x-1 dark:bg-white dark:text-black transition-all duration-150`}
         >
           Search<FaSearch></FaSearch>
         </button>

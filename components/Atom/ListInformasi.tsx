@@ -3,9 +3,9 @@ import React from "react";
 export default function ListInformasi({ data }: any) {
   return (
     <div>
-      <div className="flex mt-2">
-        <div className="w-full">
-          <table className="ml-4">
+      <div className="flex mt-2 mb-4">
+        <div className="">
+          <table className="mx-2">
             <tbody>
               <tr>
                 <td>Alternative Title</td>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FaBars } from "react-icons/fa";
+import { CgMenuLeftAlt } from "react-icons/cg";
 import { MdOutlineClose } from "react-icons/md";
 import Sidebar from "../Organisme/Sidebar";
 import FormSearch from "./FormSearch";
@@ -20,7 +20,7 @@ export default function MenuBar({ HandleSearch }: any) {
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.pageYOffset > 125) {
-        setpositionHeader("w-full fixed z-20 top-0");
+        setpositionHeader("w-full fixed z-20 top-0 bg-white shadow-lg");
       } else {
         setpositionHeader("");
       }
@@ -29,15 +29,20 @@ export default function MenuBar({ HandleSearch }: any) {
 
   return (
     <div className={`${positionHeader}`}>
-      <div className="relative z-50 bg-black py-1 lg:hidden w-full">
+      <div className="relative z-50 t-  py-1 lg:hidden w-full">
         {open && <Sidebar></Sidebar>}
         <div className="flex justify-between my-2 items-center">
-          <div>
-            <button onClick={toggleMenuBar} className="text-white ml-4">
+          <div className=" ml-4 rounded-md">
+            <button
+              onClick={toggleMenuBar}
+              className={`text-[#484197] drop-shadow-lg  p-1 rounded-md ${
+                open ? "rotate-90 " : "-rotate-30"
+              } transition-all duration-150`}
+            >
               {open ? (
-                <MdOutlineClose size={20}></MdOutlineClose>
+                <MdOutlineClose size={25}></MdOutlineClose>
               ) : (
-                <FaBars size={20}></FaBars>
+                <CgMenuLeftAlt size={25}></CgMenuLeftAlt>
               )}
             </button>
           </div>
@@ -45,9 +50,9 @@ export default function MenuBar({ HandleSearch }: any) {
             <FormSearch
               HandleSearch={HandleSearch}
               title={`Cari ${asPath === "/manga" ? "manga" : "anime"}`}
-              styleInput={"px-4 py-1 rounded-l-md text-black"}
+              styleInput={"px-4 py-1 rounded-l-xl text-black"}
               styleButton={
-                "px-3 py-1 rounded-r-md bg-slate-800 hover:bg-slate-100 text-white hover:text-black"
+                "px-3 py-1 rounded-r-xl bg-slate-800 hover:bg-slate-100 text-white hover:text-black"
               }
             ></FormSearch>
           </div>

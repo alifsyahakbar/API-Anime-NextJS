@@ -5,6 +5,9 @@ import { useRouter } from "next/router";
 import Loading2 from "./skeleton/Loading2";
 import { FaAngleRight } from "react-icons/fa";
 import star from "../../public/star.svg";
+import crown from "../../public/crown.svg";
+import SkeletonRekomendasi from "./skeleton/atom/skeletonRekomendasi";
+import SkeletonTable from "./skeleton/atom/skeletonTable";
 
 export default function TableList({ value, limit }: any) {
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -20,31 +23,50 @@ export default function TableList({ value, limit }: any) {
 
   const loading = !data && !error;
 
+  if (loading) {
+    return <SkeletonTable></SkeletonTable>;
+  }
+
   const router = useRouter();
   return (
-    <div className="pb-4 mb-4">
-      <h1 className="pt-3 pb-1 font-bangers tracking-wide text-xl">
-        Top {`${value}`} Series
-      </h1>
-      {loading && <Loading2 title={`Mohon tunggu...`}></Loading2>}
+    <div className="pb-4 mb-8">
+      <div className="flex justify-between items-center m-2">
+        <h1 className=" pb-1 font-bold text-lg capitalize tracking-normal">
+          Top {`${value}`}
+        </h1>
+        <button
+          onClick={() => router.push(`/${value}`)}
+          className="flex items-center text-sm font-bold drop-shadow-sm "
+        >
+          More <FaAngleRight size={15}></FaAngleRight>
+        </button>
+      </div>
+
+      {/* {loading && <Loading2 title={`Mohon tunggu...`}></Loading2>} */}
       <table className="table-auto w-full text-center border-y bg-white dark:bg-black [&>tbody>*:nth-child(even)]:bg-[#f8f8f8] dark:[&>tbody>*:nth-child(even)]:bg-[#121212]">
-        <thead className="border-x-slate-100 border">
-          <tr className="bg-black text-white font-bangers tracking-wide">
-            <th className="py-2 px-4 border-r-slate-100 border">Rank</th>
+        <thead className="border-x-slate-100 border ">
+          <tr className="bg-[#645ca8] text-white font-bold">
+            <th className="py-1 px-4 border-r-slate-100  border">Rank</th>
             <th className="border-r-slate-100 border">Title</th>
-            <th className="py-2 px-4">Score</th>
+            <th className="py-1 px-4">Score</th>
           </tr>
         </thead>
         <tbody className="border-x">
           {data &&
             data?.data?.map((data: any, index: number) => {
+              function toLocaleString(members: any): React.ReactNode {
+                throw new Error("Function not implemented.");
+              }
+
               return (
                 <tr
                   key={index}
                   className="hover:bg-[#fdfdfd] hover:dark:bg-[#121212] "
                 >
-                  <td className="p-2 border-r font-bangers text-3xl lg:text-4xl lg:w-32">
-                    {data.rank}
+                  <td className="relative p-2 border-r font-bangers text-3xl lg:text-4xl lg:w-32">
+                    <div className="flex flex-col items-center text-center justify-center">
+                      {data.rank}
+                    </div>
                   </td>
                   <td className="border-r">
                     <div className="flex justify-start items-center p-1 lg:p-2">
@@ -56,7 +78,7 @@ export default function TableList({ value, limit }: any) {
                         alt={data.title}
                         width={100}
                         height={100}
-                        className="w-14 cursor-pointer hover:opacity-90"
+                        className="w-14 cursor-pointer rounded-sm hover:opacity-90"
                       ></Image>
                       <div className="flex text-start flex-col ml-4">
                         <h1
@@ -102,7 +124,7 @@ export default function TableList({ value, limit }: any) {
             })}
         </tbody>
       </table>
-      <div className="flex justify-center items-center mt-4 hover:underline">
+      {/* <div className="flex justify-center items-center mt-4 hover:underline">
         <button
           onClick={() => router.push(`/${value}`)}
           className="flex text-sm font-bold drop-shadow-sm "
@@ -111,7 +133,7 @@ export default function TableList({ value, limit }: any) {
           <span className="first-letter:uppercase">{value}</span>
         </button>
         <FaAngleRight size={15}></FaAngleRight>
-      </div>
+      </div> */}
     </div>
   );
 }

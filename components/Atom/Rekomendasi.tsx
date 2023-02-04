@@ -3,6 +3,8 @@ import React from "react";
 import Image from "next/image";
 import useSWR from "swr";
 import NotData from "../Atom/NotData";
+import Loading from "./skeleton/Loading";
+import SkeletonRekomendasi from "./skeleton/atom/skeletonRekomendasi";
 
 const fetcher = (url: any) => fetch(url).then((res) => res.json());
 
@@ -18,43 +20,44 @@ export default function Rekomendasi() {
     fetcher
   );
 
+  var tunggu = !data && !error;
+
+  if (tunggu) {
+    return <SkeletonRekomendasi></SkeletonRekomendasi>;
+  }
+
   return (
-    <div>
-      <h1 className="text-lg lg:text-2xl mx-4 my-2 font-bangers tracking-wide border-t-2 pt-2">
+    <div className="overflow-x-scroll scrollbar-hide">
+      <h1 className="text-lg text-start lg:text-2xl mx-2 mt-2 font-bold pt-2">
         Rekomendasi Anime
       </h1>
-      {(data?.data || []).length ? (
-        <div className="flex overflow-x-scroll bg-[#f0ebeb] dark:bg-black scrollbar-hide">
-          {data?.data?.map((data: any, index: number) => {
-            return (
-              <div key={index} className="py-2">
-                <div
-                  onClick={() => router.push(`/anime/${data.entry.mal_id}`)}
-                  className="w-40 h-auto ml-2 cursor-pointer"
-                >
-                  <Image
-                    loader={myLoader}
-                    unoptimized={true}
-                    src={data.entry.images.webp.image_url}
-                    alt={data.entry.title}
-                    width={100}
-                    height={100}
-                    className="w-full h-64 bg-cover rounded-sm hover:scale-105 ease-out duration-150"
-                  ></Image>
-                  <h1 className="text-md font-bold mt-1">{data.entry.title}</h1>
+      <div className="flex overflow-x-scroll dark:bg-black scrollbar-hide">
+        {data?.data?.map((data: any, index: number) => {
+          return (
+            <div key={index} className="py-2 mr-2">
+              <div
+                onClick={() => router.push(`/anime/${data.entry.mal_id}`)}
+                className="relative overflow-hidden shadow-lg hover:scale-105 w-36 h-auto mb-6 ml-2 cursor-pointer ease-out duration-200"
+              >
+                <Image
+                  loader={myLoader}
+                  unoptimized={true}
+                  src={data.entry.images.webp.image_url}
+                  alt={data.entry.title}
+                  width={100}
+                  height={100}
+                  className="w-full h-[220px] bg-cover rounded-lg hover:shadow-lg ease-out duration-200 "
+                ></Image>
+                <div className=" ml-1">
+                  <h1 className="w-full border-l-[3px] border-[#867ee0] bg-gradient-to-b from-transparent to-black absolute text-start px-1  text-white bottom-1 text-md font-bold hover:underline">
+                    {data.entry.title}
+                  </h1>
                 </div>
               </div>
-            );
-          })}
-        </div>
-      ) : (
-        <div className="flex justify-center">
-          <NotData
-            value={`Tidak ada rekomendasi Anime`}
-            fonts={"text-lg"}
-          ></NotData>
-        </div>
-      )}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

@@ -1,18 +1,31 @@
 import Head from "next/head";
 import Header from "../components/Organisme/Header";
 import Footer from "../components/Organisme/Footer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import HomePage from "../components/Organisme/HomePage";
 import ResultSearch from "../components/Organisme/ResultSearch";
+import Welcome from "../components/Atom/loading/welcome";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const [search, setSearch] = useState("");
+  // const [isWelcome, setWelcome] = useState(true);
 
   const HandleSearch = (e: any) => {
     e.preventDefault();
     const inputQuery = e.target[0].value;
     setSearch(inputQuery);
   };
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setWelcome(false);
+  //   }, 5000);
+  // });
+
+  // if (isWelcome) {
+  //   return <Welcome></Welcome>;
+  // }
 
   return (
     <>
@@ -28,7 +41,6 @@ export default function Home() {
       ) : (
         <HomePage></HomePage>
       )}
-
       <Footer></Footer>
     </>
   );

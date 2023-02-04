@@ -3,7 +3,7 @@ import React from "react";
 export default function TailerVideo({ data, width, height }: any) {
   return (
     <>
-      <div className="shadow-lg">
+      <div className="shadow-lg h-52 lg:w-[700px] lg:h-[400px]">
         <iframe
           width={width}
           height={height}
