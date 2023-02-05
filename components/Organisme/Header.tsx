@@ -17,7 +17,7 @@ export default function Header({ HandleSearch }: any) {
     <div className="">
       <Link href="/">
         <div
-          className="flex justify-center w-full pt-2 bg-[#484197] rounded-b-3xl"
+          className="flex justify-center w-full pt-2 hover:bg-[#484197] bg-[#484197] rounded-b-3xl"
           data-aos="fade-up"
         >
           <h1 className="flex drop-shadow-xl font-bangers text-4xl lg:text-5xl text-white text-center my-4 dark:text-white">
